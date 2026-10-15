@@ -1,0 +1,6 @@
+# Если весь проект помещён в htdocs, закрываем служебные каталоги.
+# Рекомендуется DocumentRoot непосредственно на public/.
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(app|database|docs|tests|var)(/|$) - [F,L]
+RewriteRule ^$ public/ [R=302,L]

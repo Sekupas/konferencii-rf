@@ -1,0 +1,42 @@
+erDiagram
+  USERS ||--o{ BOOKINGS : creates
+  ROOMS ||--o{ BOOKINGS : hosts
+  BOOKINGS ||--o| REVIEWS : receives
+  USERS {
+    int id PK
+    varchar login UK
+    varchar password_hash
+    varchar full_name
+    varchar phone
+    varchar email
+    varchar role
+    timestamp created_at
+  }
+  ROOMS {
+    int id PK
+    varchar name
+    varchar type
+    int capacity
+    varchar description
+  }
+  BOOKINGS {
+    int id PK
+    int user_id FK
+    int room_id FK
+    datetime starts_at
+    varchar payment
+    varchar status
+    timestamp created_at
+  }
+  REVIEWS {
+    int id PK
+    int booking_id FK,UK
+    int rating
+    text body
+    timestamp created_at
+  }
+  LOGIN_ATTEMPTS {
+    int id PK
+    char attempt_key
+    bigint attempted_at
+  }
